@@ -1,0 +1,102 @@
+buyer_id,buyer_name,department_code,country
+656c6e7b-f1da-4211-bd89-1d65fdcaf2b0,Department Of Tourism,DOT,India
+323a02ff-d045-43b1-8ed0-94338c10d7c9,Department Of Water Resources,DoWR,India
+2e366a0e-5961-467f-8fcb-bccc1bc68494,Director- Fire And Emergency Services-Assam,FESA,India
+08657d8e-de5f-4542-9f73-40a5bb0d3bf5,Gauhati High Court - Guwahati,GHC,India
+ddc4a7dd-5e18-4fb5-bb1f-cd92add32739,Health And Family Welfare Department,HFWD,India
+64c713fb-652b-46f0-b5f6-b6953fd438bf,Higher Education (Technical) Department,HET,India
+6e6a80d5-8b68-4df7-b653-c8f863e1e4f2,Industries And Commerce Department,ICD,India
+046ce650-00f2-40ee-a30c-88123b8f0b18,Irrigation Department,ID,India
+0ca6b348-bf56-42fe-b4b8-8491d7d0ceb7,National Health Mission,NHM,India
+8d80bc14-d11f-44ce-87f6-adba29c19658,Public Health Engineering Department,PHED,India
+5a9f5b71-6751-4d54-b38e-b0c301782ede,Public Works Building And Nh Department,PWBNH,India
+f5e706ea-48d1-4b79-a9d2-cae6abea2e00,Principal Secretary- P And Rd- Assam Secretariat,PNRD,India
+3ca42c30-1422-447d-9011-747a9ab1dc18,Bodoland Territorial Council-Pwd,BTC,India
+0e10dead-fc72-40f2-b3d7-fc477b57a43c,Bodoland Territorial Council-Wrd,BTCWR,India
+3718659c-9ca2-4cb5-82fa-1330b98d9b65,Cooperation Department,CD,India
+cc5c40f0-01a7-4042-891c-7edab26565dc,Directorate Of Agriculture And Assam Seed Corporation,DAASC,India
+febac14e-0399-4048-8c71-2501969b6801,Department Of Cultural Affairs,DCA,India
+d3fc0ab1-c9bb-4793-87e0-edb15fdbd30e,Directorate Of Forensic Science Assam,DFS,India
+f1bc3430-029f-46da-a9bf-cc3ad6862338,Directorate Of Horticulture Assam,DHA,India
+d0d663df-3eaf-4bf6-9928-9225971dcad9,Department Of Handloom Textile And Sericulture,DHTS,India
+cbacc318-7872-425c-801d-1e6c5ec97636,Principal Secretary-Department Of Information Technology,DoIT,India
+36520f7a-de09-49f9-8542-b70fdafa4505,Department Of Labour And Welfare,DLW,India
+ffccc11a-b76d-47c3-8063-8f9c41b50992,Public Works Roads Department,PWD,India
+866c2fc7-06c1-456e-8ac2-f53e728fd7ba,Rashtriya Madhyamik Siksha Abhijan,RMSA,India
+01b7cdbb-44f0-4c64-916a-65787d7c6740,Soil Conservation Department,SCD,India
+234a32f2-0eaf-4c50-afbe-4eed08776dc8,Secondary Education Department Assam,SE,India
+17b260c4-4a75-47f9-ae35-dd7fb7c9c13c,Skill Employment And Entrepreneurship Department,SEED,India
+d9594ddf-5a56-4e6d-a3bb-f4f611e325c7,Axom Sarba Siksha Abhijan Mission,SSA,India
+ef7cd3c2-69be-4bc6-9eb0-42f92db64aa2,Assam Police Housing Corporation Ltd,APHC,India
+29379522-42b1-4e6f-b074-d92470a7f35a,Assam State Agricultural Marketing Board,ASAMB,India
+57bca89c-38cb-4bc6-b3b6-0953af14502d,Finance Department - World Bank Tenders,ASPIR,India
+1a423438-8efa-41f0-83c6-ebb18d4c5bec,Bodoland Territorial Council,BoTC,India
+5fdbb515-6ee0-47b0-8bf9-8f92efba8f4c,Guwahati Municipal Corporation,GMC,India
+12515fad-f18a-4545-b95c-2a33e98d1d59,Guwahati Metropolitan Development Authority,GMDA,India
+0b06ea72-b7b4-4722-9aba-876f49973cdf,Guwahati Smart City Ltd.,GSCT,India
+9db62524-1da0-41b8-bb71-a48f39474bbf,Home B,HB,India
+c04c71c2-76bd-4468-bea2-e9926f30b133,Department Of Higher Education,HE,India
+8d250839-91db-4251-9b81-9e0262003061,Karbi Anglong Autonomous Council,KAAC,India
+4a0bc4a2-b2e6-4a5a-8afb-b445fd1eee25,Mines  And Minerals Department,MMD,India
+d0d2e785-9cde-41c0-88b6-b614deb34002,Pollution Control Board,PCB,India
+72c935e8-584d-4c86-a88e-c972b3c131f3,Pr. Chief Conservator Of Forest And Head Of Forest Force,PCCF,India
+83db9120-26e0-4dc8-89e9-5b82e80a6f2f,Printing And Stationery Department,PSD,India
+2e35bd90-9895-42f0-93ee-fa74b20bf10d,Assam State Disaster Management Authority,ASDMA,India
+13fb2ac1-7be1-4ecc-a903-f35a726b5a47,Assam State Transport Corporation,ASTC,India
+ad4bae70-9220-4793-b4c0-5c62567e5fa5,Assam Urban Infrastructure Investment Program,AUIIP,India
+6fdc5977-79f1-4d8f-b546-eeb20cdbc146,Bodoland University,BODOU,India
+07ead4d2-224c-4059-ba81-bc09a2cdb2ff,Social Welfare Department,SWD,India
+71315a98-675b-4bc5-9f82-78dab1500f9e,Directorate Of Sports And Youth Welfare - Assam,SYWA,India
+18507031-ed75-49d2-977e-68721787ae3d,Urban Development Department,UDD,India
+4ee52b57-6649-4a1b-92e9-c9286e26a2b5,Welfare Of Plain Tribes And Backward Classes,WPTBC,India
+c615227e-14e6-4337-ba37-b056a341bfda,Assam Electricity Grid Corporation Ltd,AEGCL,India
+25e8e80f-6949-482c-8e02-0fb8b0466e76,Assam Electricity Grid Corporation Ltd. - Externally Funded Projects,AEGEF,India
+2b76eb70-1866-4ec3-849f-9212badab317,Animal Husbandry And Veterinary Department,AHVD,India
+fd6f7969-925f-4685-9c27-7138fd50bc09,Animal Husbandry And Veterinary Department-Externally Aided Project,AHVDE,India
+412b24b8-df75-4f4b-bbc0-a4dcee967c1e,Assam Inland Water Transport Development Society,AIWTD,India
+530b8c2b-fa6a-41fa-9f4f-6ae5ff6dea9a,Assam Police,AP,India
+51d796fe-4bce-4a55-9ade-8c936e2d3627,Assam Power Distribution Company Ltd,APDCL,India
+60e5f068-672f-4040-adeb-34ec2761f10b,Assam Power Distribution Company Limited- Externally Aided Project,APDEA,India
+d583a860-535f-4af1-99e8-9e199514e441,Assam Power Generation Company Limited Apgcl - Adb,APGC,India
+cfadf9dc-d506-4336-b74c-60446d941b58,Water Resources Department- World Bank Tenders,AWRMI,India
+16b50c1b-b65c-4e7e-aef9-c1037fe7e79c,Information And Public Relations Department,DIPR,India
+5cf8b198-4ffe-4d0e-a045-cf0c84169a01,Tea Tribes Welfare Department,TTWD,India
+17ba45df-02b0-4efc-8cfe-1c2152d1937c,Public Works Roads Department-Externally Aided Project,PWRDW,India
+432d1be1-0dd7-438d-a725-45fb3b2d7885,Hill Areas Department,HAD,India
+14fdce69-243e-423e-9dac-3c948e0237c6,Assam Cancer Care Foundation,ACCF,India
+4d077034-4084-417e-923c-ef3da45b8aad,Assam Power Generation Company Limited,APGCL,India
+7edb022a-92a0-41bd-985a-bc07ebad6ffb,Office Of The Chief Electoral Officer Assam,CEO,India
+30d1902f-f7e5-4d83-9b26-68fa5305e132,Department Of Housing And Urban Affairs,DHUA,India
+cbbc74a6-dc35-44f9-96d0-2f85debe3279,Elementary Education Department,DEE,India
+227348d5-d009-4abb-8740-974b0b49629d,Food Civil Supplies And Consumer Affairs Department,FCS,India
+6693a8cb-f5e4-456a-80d0-d75df62b55c1,Department Of Fisheries,FD,India
+48540617-4f42-4d8c-85bd-a8018a77f0c6,Department Of Science And Technology,SNT,India
+9f3ececa-3e4e-4251-ab1d-d97709f50fa0,Assam Society For Comprehensive Financial Management System,CFMS,India
+c66590c8-9a70-42a6-9e87-368017871c9b,Commissionerate Of Transport,CT,India
+4ef03bae-b4ad-40dd-b153-7a370cf19c90,National Register Of Citizens Assam,NRC,India
+7cc65922-c6ac-403e-aa85-46bc85d31763,Dibrugarh University,DU,India
+6859b1b3-24de-4ccd-a988-d065ed71cd03,General Administration Department,GAD,India
+7f1ffba2-e020-4b05-b209-9c74bb628cbc,Gauhati University,GU,India
+c62646e7-1983-4591-ae02-8faa31750bcb,Assam Agricultural University,AAU,India
+fe5c4657-6133-42d1-b7f8-47a121293ae2,Transport Department- Externally Funded Projects,TDEP,India
+39498a4c-9a7a-4d0e-b8fa-7c8ad578f998,Chief Minister Secretariat,CMS,India
+45dbd6d6-969a-4080-9ead-b9f7d27b2997,Assam Home Guards And Civil Defence Organization,HD,India
+66c3a788-ad08-4135-851a-27abb74df9f0,Information - Public Relations - Printing And Stationery Department,IPRPS,India
+95cffc2c-97ea-4fd5-807f-9e820a5b91fb,Taxation Department,TAX,India
+8fba750b-b696-4a51-ba30-fa8b13038e12,Welfare Of Minorities Development Department,WMDD,India
+04f890db-d2eb-40d4-983d-84fec07974d4,Excise Department,ED,India
+9009796a-b08b-4d46-adcf-d8c14c594376,Secretariat Administration Department,SAD,India
+ffd89d46-7b99-413d-87fe-5c405ff2e3ea,Transport Department,TDA,India
+ab7dd4cd-c26b-485a-9452-949c96e70006,Cotton University,CU,India
+88b474c7-35f8-4e84-a7d5-8338833587c5,Directorate Of Land Records And Survey Etc. Assam,DLRAR,India
+688bf28f-5782-4eaa-a558-5b4f10609eb0,Office Of The Chief Minister,CMO,India
+8677b1f9-fbb6-4266-bd3e-8491b706cd9a,Assam Science And Technology University,ASTU,India
+0b856bed-60cd-4332-9134-d966dd0e844b,Assam Land Management And Information Society,MISAL,India
+7c1e635c-5adf-4f2c-ab8a-387f61ea1e7f,Transformation And Development Department,TND,India
+3bc90c57-3573-4ef6-ab4c-ca93d34b3d75,Assam Public Service Commission,APSC,India
+68e44bb9-9a21-4a11-bed7-007c0be2d134,Srimanta Sankardeva University Of Health Sciences,SSUHS,India
+0fc5b5ff-4271-4aa6-9ba4-c495598defe5,Indigenous And Tribal Faith And Culture Department,ITFCD,India
+99e57d95-310d-46b2-8f98-0dfe298c1542,Organizing Committee-South Asian Games,SAG,India
+35e1d497-e274-4b45-b7d0-ed16347c7103,North Cachar Hills Autonomous Council,NCHAC,India
+ba807729-f0b2-4ae6-b4f8-e0352ebee0e4,Border Protection And Development Department,DBPD,India
+cad13816-649e-42cf-8c7c-d97dd4f2d14f,Assam Power Distribution Company Limited-Adb,ADBAP,India

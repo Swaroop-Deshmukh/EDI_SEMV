@@ -1,0 +1,91 @@
+# =============================================================
+# .gitignore — AI Public Procurement Auditor
+# Python + Node.js / Next.js project
+# =============================================================
+
+# ----- Python -----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+*.so
+pip-log.txt
+pip-delete-this-directory.txt
+.installed.cfg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+.env
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+*.ipynb
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# mypy / ruff / pyright
+.mypy_cache/
+.ruff_cache/
+.pyright/
+
+# ----- Node.js / Next.js -----
+node_modules/
+.next/
+out/
+.nuxt/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp/
+.pnp.js
+.yarn/install-state.gz
+
+# ----- Environment / secrets -----
+.env
+.env.local
+.env.*.local
+*.env
+secrets.yaml
+secrets.json
+credentials.json
+
+# ----- Database -----
+*.sql.bak
+*.dump
+*.pgdump
+pgdata/
+
+# ----- Data files (large raw CSVs — never commit raw source data) -----
+data/raw/**/*.csv
+data/raw/**/*.jsonl
+data/raw/**/*.json
+# data/processed/*.csv  ← intentionally NOT ignored; processed CSVs are tracked
+
+# ----- OS -----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ----- IDEs -----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ----- Logs -----
+*.log
+logs/

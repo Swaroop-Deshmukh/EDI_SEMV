@@ -233,7 +233,7 @@ COMMENT ON COLUMN tender_milestones.due_date IS 'NULL when source data contains 
 
 CREATE TABLE suppliers (
     supplier_id     VARCHAR(50)     PRIMARY KEY,            -- WB master supplier ID (e.g. '1065844')
-    supplier_name   VARCHAR(255)    NOT NULL,               -- Official legal name
+    supplier_name   VARCHAR(255),                           -- Official legal name
     country         VARCHAR(100),                           -- Registered country
     country_code    VARCHAR(10),                            -- ISO / WB country code
     source_dataset  VARCHAR(50)     NOT NULL DEFAULT 'World Bank IPF',
@@ -264,21 +264,21 @@ CREATE TABLE contracts (
     -- Procurement metadata
     procurement_category                VARCHAR(50)     NOT NULL,   -- Goods / Works / Consultant Services
     procurement_method                  VARCHAR(100)    NOT NULL,   -- e.g. QCBS, RFB, RFQ
-    contract_description                TEXT            NOT NULL,
+    contract_description                TEXT,
     borrower_contract_reference_number  VARCHAR(255),               -- borrower-assigned reference
 
     -- Award details
     contract_signing_date               DATE,
     supplier_id                         VARCHAR(50)
                                             REFERENCES suppliers(supplier_id) ON DELETE SET NULL,
-    contract_amount_usd                 NUMERIC(20, 2)  NOT NULL,   -- total committed amount in USD
+    contract_amount_usd                 NUMERIC(20, 2),             -- total committed amount in USD
     review_type                         VARCHAR(20),                -- Prior / Post
 
     -- Geography / provenance
     calendar_year                       INTEGER,
     borrower_country                    VARCHAR(100)    NOT NULL,
-    borrower_country_code               VARCHAR(10)     NOT NULL,
-    source_file                         VARCHAR(150)    NOT NULL,
+    borrower_country_code               VARCHAR(10),
+    source_file                         VARCHAR(150)    NOT NULL DEFAULT 'contract_awards_in_investment_project_financing_since_fy_2020_09-12-2026.csv',
 
     -- Metadata
     created_at                          TIMESTAMPTZ     DEFAULT NOW(),
@@ -327,6 +327,7 @@ COMMENT ON COLUMN tender_contract_link.matched_reference IS 'The shared identifi
 
 CREATE TABLE invoices (
     invoice_id          UUID                PRIMARY KEY DEFAULT gen_random_uuid(),
+    record_id           INTEGER,                                                    -- benchmark invoice record identifier (0-99)
     contract_id         UUID
                             REFERENCES contracts(contract_id) ON DELETE RESTRICT,   -- nullable until resolved
     supplier_id         VARCHAR(50)
@@ -335,15 +336,15 @@ CREATE TABLE invoices (
                             REFERENCES tenders(tender_id) ON DELETE SET NULL,       -- nullable until resolved
 
     -- Invoice metadata (from OCR)
-    invoice_number      VARCHAR(100)        NOT NULL,
+    invoice_number      VARCHAR(100),
     invoice_date        DATE,
-    total_amount        NUMERIC(20, 2)      NOT NULL,
-    currency            VARCHAR(10)         NOT NULL DEFAULT 'INR',
+    total_amount        NUMERIC(20, 2),
+    currency            VARCHAR(10)         DEFAULT 'INR',
 
     -- OCR processing metadata
     ocr_confidence      NUMERIC(5, 4)
                             CHECK (ocr_confidence BETWEEN 0 AND 1),
-    source_file         VARCHAR(255)        NOT NULL,   -- path to scanned invoice file
+    filename            VARCHAR(255)        NOT NULL,   -- path/name of scanned invoice file
 
     -- Metadata
     created_at          TIMESTAMPTZ         DEFAULT NOW(),
@@ -351,7 +352,8 @@ CREATE TABLE invoices (
 );
 
 COMMENT ON TABLE  invoices                 IS 'OCR-extracted invoice headers. Forward-declared for OCR pipeline.';
-COMMENT ON COLUMN invoices.source_file     IS 'Absolute or relative path to the scanned invoice PDF/image.';
+COMMENT ON COLUMN invoices.record_id       IS 'Benchmark invoice record identifier from OCR evaluation dataset.';
+COMMENT ON COLUMN invoices.filename        IS 'Filename of the scanned invoice PDF/image.';
 COMMENT ON COLUMN invoices.ocr_confidence  IS 'OCR extraction confidence score between 0 and 1.';
 
 
@@ -371,7 +373,7 @@ CREATE TABLE invoice_items (
     description         TEXT            NOT NULL,   -- OCR-extracted item description
     quantity            NUMERIC(15, 3),             -- physical quantity billed
     unit_price          NUMERIC(20, 2),             -- billed unit rate
-    total_price         NUMERIC(20, 2)  NOT NULL,   -- line total (quantity * unit_price)
+    line_total          NUMERIC(20, 2),             -- line total as extracted from invoice
     ocr_confidence      NUMERIC(5, 4)
                             CHECK (ocr_confidence BETWEEN 0 AND 1),
     created_at          TIMESTAMPTZ     DEFAULT NOW(),
@@ -380,7 +382,7 @@ CREATE TABLE invoice_items (
 
 COMMENT ON TABLE  invoice_items                 IS 'OCR-extracted invoice line items. Forward-declared for OCR pipeline.';
 COMMENT ON COLUMN invoice_items.item_id         IS 'Nullable FK to tender items; populated when line-item matches a known procurement item.';
-COMMENT ON COLUMN invoice_items.total_price     IS 'Line-item total (quantity * unit_price) as extracted or computed.';
+COMMENT ON COLUMN invoice_items.line_total      IS 'Line-item total as extracted from invoice.';
 COMMENT ON COLUMN invoice_items.ocr_confidence  IS 'OCR extraction confidence for this specific line item.';
 
 

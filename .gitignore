@@ -89,3 +89,5 @@ desktop.ini
 # ----- Logs -----
 *.log
 logs/
+
+data/ocr/rvl_cdip_invoice/

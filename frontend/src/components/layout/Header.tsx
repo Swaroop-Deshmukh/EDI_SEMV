@@ -2,17 +2,24 @@
 
 import React, { useState } from 'react';
 import { Search, Bell, Shield, User, ChevronDown, LogOut, Check } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { UserRole, MOCK_USERS } from '@/mock/auth';
 import { GlobalSearchModal } from './GlobalSearchModal';
 import { NotificationsDrawer } from './NotificationsDrawer';
 
 export const Header: React.FC = () => {
+  const router = useRouter();
   const { currentUser, activeRole, switchRole, logout } = useAuth();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isRoleMenuOpen, setIsRoleMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    router.push('/');
+  };
 
   return (
     <>
@@ -113,10 +120,7 @@ export const Header: React.FC = () => {
                   </div>
                 </div>
                 <button
-                  onClick={() => {
-                    setIsUserMenuOpen(false);
-                    logout();
-                  }}
+                  onClick={handleLogout}
                   className="w-full px-3 py-2 text-left flex items-center gap-2 text-red-600 hover:bg-red-50 transition-colors"
                 >
                   <LogOut className="w-3.5 h-3.5" />

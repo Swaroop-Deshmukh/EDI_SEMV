@@ -8,7 +8,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   activeRole: UserRole;
   switchRole: (role: UserRole) => void;
-  login: (email: string, role?: UserRole) => boolean;
+  login: (idOrEmail: string, role?: UserRole) => boolean;
   logout: () => void;
 }
 
@@ -16,14 +16,26 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User>(CURRENT_USER);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   useEffect(() => {
-    // Check saved role or session in localStorage
+    // Check saved session in localStorage
+    const savedAuth = localStorage.getItem('gov_auditor_auth');
     const savedRole = localStorage.getItem('gov_auditor_role') as UserRole | null;
-    if (savedRole) {
-      const match = MOCK_USERS.find(u => u.role === savedRole);
-      if (match) setCurrentUser(match);
+    const savedUserId = localStorage.getItem('gov_auditor_user_id');
+
+    if (savedAuth === 'true') {
+      let match: User | undefined;
+      if (savedUserId) {
+        match = MOCK_USERS.find(u => u.id === savedUserId || u.employeeId === savedUserId);
+      }
+      if (!match && savedRole) {
+        match = MOCK_USERS.find(u => u.role === savedRole);
+      }
+      if (match) {
+        setCurrentUser(match);
+        setIsAuthenticated(true);
+      }
     }
   }, []);
 
@@ -32,25 +44,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (match) {
       setCurrentUser(match);
       localStorage.setItem('gov_auditor_role', role);
+      localStorage.setItem('gov_auditor_user_id', match.id);
     }
   };
 
-  const login = (email: string, role?: UserRole) => {
-    const match = MOCK_USERS.find(u => (role ? u.role === role : u.email.toLowerCase() === email.toLowerCase()));
-    if (match) {
-      setCurrentUser(match);
-      setIsAuthenticated(true);
-      localStorage.setItem('gov_auditor_role', match.role);
-      return true;
+  const login = (idOrEmail: string, role?: UserRole) => {
+    const query = idOrEmail.trim().toLowerCase();
+    let match = MOCK_USERS.find(u =>
+      u.employeeId.toLowerCase() === query ||
+      u.email.toLowerCase() === query ||
+      u.name.toLowerCase().includes(query)
+    );
+
+    if (!match && role) {
+      match = MOCK_USERS.find(u => u.role === role);
     }
-    // Default fallback
-    setCurrentUser(CURRENT_USER);
+
+    if (!match) {
+      // Default to selected role or senior auditor
+      match = role ? MOCK_USERS.find(u => u.role === role) || CURRENT_USER : CURRENT_USER;
+    }
+
+    setCurrentUser(match);
     setIsAuthenticated(true);
+    localStorage.setItem('gov_auditor_auth', 'true');
+    localStorage.setItem('gov_auditor_role', match.role);
+    localStorage.setItem('gov_auditor_user_id', match.id);
     return true;
   };
 
   const logout = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem('gov_auditor_auth');
+    localStorage.removeItem('gov_auditor_role');
+    localStorage.removeItem('gov_auditor_user_id');
   };
 
   return (

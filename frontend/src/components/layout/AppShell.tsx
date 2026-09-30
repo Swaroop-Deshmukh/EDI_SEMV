@@ -12,9 +12,12 @@ export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) 
   const pathname = usePathname();
   const { isAuthenticated } = useAuth();
 
-  // If login page or not authenticated, render bare content
-  if (pathname === '/login' || !isAuthenticated) {
-    return <main className="min-h-screen bg-slate-100">{children}</main>;
+  // Route is purely public if it's the landing home page '/' or login page '/login'
+  const isPublicRoute = pathname === '/' || pathname === '/login';
+
+  // If public route or unauthenticated, render pure standalone page without sidebar shell
+  if (isPublicRoute || !isAuthenticated) {
+    return <main className="min-h-screen bg-slate-50 w-full">{children}</main>;
   }
 
   return (

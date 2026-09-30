@@ -22,22 +22,18 @@ import {
   Clock,
   Megaphone,
   Sparkles,
-  Layers,
-  ChevronDown,
-  Eye,
-  Check
+  User,
+  ExternalLink
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { MOCK_CONTRACTS } from '@/mock/contracts';
 
 export default function HomePage() {
   const router = useRouter();
-  const { isAuthenticated } = useAuth();
 
   // Search & Filter for Tenders Section
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
-  const [activeTab, setActiveTab] = useState<'all' | 'active' | 'awarded'>('all');
 
   const filteredContracts = MOCK_CONTRACTS.filter(c => {
     const matchesSearch =
@@ -54,12 +50,12 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans flex flex-col selection:bg-blue-600 selection:text-white">
       
-      {/* 1. TOP NAVBAR */}
+      {/* 1. TOP NAVBAR (Matching Mockup) */}
       <nav className="h-16 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 md:px-12 flex items-center justify-between sticky top-0 z-50 shadow-2xs">
         {/* Left: Brand / Logo */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm">
-            <Shield className="w-5 h-5 text-white" />
+          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm">
+            <Shield className="w-4.5 h-4.5 text-white" />
           </div>
           <div>
             <div className="font-extrabold text-xs md:text-sm text-slate-900 tracking-tight leading-tight uppercase font-sans">
@@ -103,7 +99,7 @@ export default function HomePage() {
           </button>
           <button
             onClick={() => router.push('/login')}
-            className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs px-4 py-2 rounded-lg flex items-center gap-2 shadow-sm shadow-blue-500/20 transition-all hover:shadow cursor-pointer"
+            className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-sm shadow-blue-500/20 transition-all hover:shadow cursor-pointer"
           >
             <Lock className="w-3.5 h-3.5" />
             <span>Login</span>
@@ -111,48 +107,53 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* 2. HERO SECTION (With High-Tech Government Architecture Visual) */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#061B36] via-[#0B2A4A] to-[#041226] text-white pt-12 pb-16 px-4 md:px-12 border-b border-blue-900/40">
+      {/* 2. FULL-WIDTH PANORAMIC HERO SECTION (Covering First-Look Area) */}
+      <section className="relative overflow-hidden bg-[#0A1E38] text-white min-h-[460px] md:min-h-[520px] flex items-center px-4 md:px-12 border-b border-blue-900/50">
         
-        {/* Subtle grid and decorative background glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(37,99,235,0.18),transparent_50%)] pointer-events-none" />
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.15),transparent_60%)] pointer-events-none" />
+        {/* Panoramic Background Architecture Layer (Rashtrapati Bhavan / Parliament Neoclassical Dome Motif) */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' width='1440' height='600'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231E3A8A' stop-opacity='0.4'/%3E%3Cstop offset='100%25' stop-color='%230F172A' stop-opacity='0.8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1440' height='600' fill='url(%23grad)'/%3E%3C!-- Central Parliament Dome Silhouette --%3E%3Cpath d='M720 120 C 650 120, 600 180, 600 240 L 840 240 C 840 180, 790 120, 720 120 Z' fill='%2394A3B8' opacity='0.35'/%3E%3Crect x='705' y='60' width='30' height='60' fill='%2394A3B8' opacity='0.4'/%3E%3Cpolygon points='720,20 705,60 735,60' fill='%23F59E0B' opacity='0.7'/%3E%3C!-- Grand Colonnade Base --%3E%3Crect x='480' y='240' width='480' height='120' fill='%2364748B' opacity='0.25'/%3E%3C!-- Pillars --%3E%3Cg fill='%23CBD5E1' opacity='0.3'%3E%3Crect x='510' y='260' width='14' height='100'/%3E%3Crect x='550' y='260' width='14' height='100'/%3E%3Crect x='590' y='260' width='14' height='100'/%3E%3Crect x='630' y='260' width='14' height='100'/%3E%3Crect x='670' y='260' width='14' height='100'/%3E%3Crect x='710' y='260' width='14' height='100'/%3E%3Crect x='750' y='260' width='14' height='100'/%3E%3Crect x='790' y='260' width='14' height='100'/%3E%3Crect x='830' y='260' width='14' height='100'/%3E%3Crect x='870' y='260' width='14' height='100'/%3E%3Crect x='910' y='260' width='14' height='100'/%3E%3C/g%3E%3C!-- Extended Secretariat Wings --%3E%3Crect x='100' y='280' width='380' height='160' fill='%23475569' opacity='0.2'/%3E%3Crect x='960' y='280' width='380' height='160' fill='%23475569' opacity='0.2'/%3E%3C/svg%3E")`
+          }}
+        />
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+        {/* Cyber Neon Gradient Overlay & Digital Circuit Glow */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061830] via-[#0A2242]/90 to-[#041021]/95 pointer-events-none" />
+        <div className="absolute right-12 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10 py-10">
           
-          {/* Left Hero Copy */}
-          <div className="lg:col-span-7 space-y-5">
+          {/* Left Hero Content */}
+          <div className="lg:col-span-7 space-y-6">
             
-            {/* Pill Tag */}
-            <div className="inline-flex items-center gap-2 bg-blue-500/15 border border-blue-400/30 text-blue-300 text-2xs font-bold px-3 py-1 rounded-full backdrop-blur-xs">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>CENTRAL VIGILANCE DIRECTIVE • AI OVERSIGHT ENGINE v2.4</span>
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.12] text-white">
+                AI-Powered Oversight for <br />
+                <span className="text-blue-400">
+                  Transparent Public Procurement
+                </span>
+              </h1>
+
+              <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed max-w-xl font-normal pt-2">
+                Automated anomaly detection, XAI risk scoring and real-time vigilance to ensure integrity, fairness and efficiency in government tenders and public sector spending.
+              </p>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15] text-white">
-              AI-Powered Oversight for <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-cyan-300">
-                Transparent Public Procurement
-              </span>
-            </h1>
-
-            <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
-              Automated anomaly detection, XAI risk scoring and real-time vigilance to ensure integrity, fairness and efficiency in government tenders and public sector spending.
-            </p>
-
-            {/* CTAs */}
+            {/* CTAs matching design */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={() => router.push('/login')}
                 className="bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-xs md:text-sm px-6 py-3 rounded-lg shadow-lg shadow-blue-600/30 flex items-center gap-2 transition-transform active:scale-95 cursor-pointer"
               >
-                <Lock className="w-4 h-4" />
+                <User className="w-4 h-4" />
                 <span>Enter Auditor Workspace</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
+
               <a
                 href="#tenders"
-                className="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs md:text-sm px-6 py-3 rounded-lg border border-white/20 backdrop-blur-xs transition-colors flex items-center gap-2"
+                className="bg-slate-800/60 hover:bg-slate-800 text-white font-semibold text-xs md:text-sm px-6 py-3 rounded-lg border border-slate-600/60 backdrop-blur-xs transition-colors flex items-center gap-2"
               >
                 <Search className="w-4 h-4 text-slate-300" />
                 <span>Browse Public Tenders</span>
@@ -160,70 +161,70 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right Hero Visual (Cyber Graphic with Floating Tags & Building Motif) */}
-          <div className="lg:col-span-5 relative flex items-center justify-center">
+          {/* Right Holographic AI Cyber Illustration (Matching image layout) */}
+          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[320px]">
             
-            {/* Graphic Container */}
-            <div className="relative w-full max-w-md bg-gradient-to-b from-blue-950/60 to-slate-950/80 rounded-2xl border border-blue-500/30 p-6 shadow-2xl backdrop-blur-md overflow-hidden">
+            {/* Center Blueprint Document Hologram */}
+            <div className="relative w-72 h-80 bg-gradient-to-b from-blue-900/40 to-slate-900/80 rounded-2xl border border-cyan-400/40 p-5 shadow-2xl backdrop-blur-md flex flex-col justify-between overflow-hidden">
               
-              {/* Architecture Motif Watermark */}
-              <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]" />
-              
-              <div className="relative z-10 flex flex-col items-center text-center space-y-4 py-3">
-                
-                {/* Center Glowing Hologram Icon */}
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-400 p-0.5 shadow-xl shadow-cyan-500/25 animate-pulse">
-                  <div className="w-full h-full bg-[#07192F] rounded-2xl flex items-center justify-center">
-                    <FileSpreadsheet className="w-10 h-10 text-cyan-400" />
-                  </div>
+              {/* Document Header lines */}
+              <div className="space-y-2 border-b border-cyan-400/20 pb-3">
+                <div className="flex items-center justify-between">
+                  <div className="h-3 w-20 bg-cyan-400/40 rounded" />
+                  <div className="h-2.5 w-10 bg-cyan-400/20 rounded" />
                 </div>
-
-                <div>
-                  <h3 className="text-base font-bold text-white tracking-wide">Continuous Audit Mesh</h3>
-                  <p className="text-2xs text-slate-400 mt-0.5">34,232 Central Procurement Tenders Audited</p>
-                </div>
-
-                {/* Floating Hologram Tags */}
-                <div className="grid grid-cols-2 gap-2.5 w-full text-left pt-2">
-                  <div className="bg-blue-900/50 border border-blue-400/30 rounded-lg p-2.5 flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <div>
-                      <div className="text-[11px] font-bold text-white">Fraud Detection</div>
-                      <div className="text-[9px] text-slate-400 font-mono">Isolation Forest</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-900/50 border border-blue-400/30 rounded-lg p-2.5 flex items-center gap-2">
-                    <BarChart3 className="w-4 h-4 text-amber-400 shrink-0" />
-                    <div>
-                      <div className="text-[11px] font-bold text-white">Risk Scoring</div>
-                      <div className="text-[9px] text-slate-400 font-mono">0-100 Calibrated</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-900/50 border border-blue-400/30 rounded-lg p-2.5 flex items-center gap-2">
-                    <Brain className="w-4 h-4 text-sky-400 shrink-0" />
-                    <div>
-                      <div className="text-[11px] font-bold text-white">XAI Explanations</div>
-                      <div className="text-[9px] text-slate-400 font-mono">SHAP Game Theory</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-900/50 border border-blue-400/30 rounded-lg p-2.5 flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-indigo-400 shrink-0" />
-                    <div>
-                      <div className="text-[11px] font-bold text-white">Real-time Monitor</div>
-                      <div className="text-[9px] text-slate-400 font-mono">Continuous Stream</div>
-                    </div>
-                  </div>
-                </div>
+                <div className="h-2 w-32 bg-cyan-400/20 rounded" />
               </div>
+
+              {/* Center Magnifying Glass examining Shield */}
+              <div className="my-auto flex items-center justify-center relative py-4">
+                <div className="w-24 h-24 rounded-full bg-cyan-500/10 border-2 border-cyan-400/50 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                  <ShieldCheck className="w-12 h-12 text-cyan-400" />
+                </div>
+                {/* Magnifying glass handle representation */}
+                <div className="absolute right-12 bottom-4 w-6 h-2 bg-cyan-400/60 rounded rotate-45" />
+              </div>
+
+              {/* Document Footer lines */}
+              <div className="space-y-1.5 pt-2 border-t border-cyan-400/20">
+                <div className="h-2 w-full bg-cyan-400/20 rounded" />
+                <div className="h-2 w-3/4 bg-cyan-400/20 rounded" />
+              </div>
+
+              {/* Circuit Grid Pattern */}
+              <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:12px_12px] opacity-20 pointer-events-none" />
+            </div>
+
+            {/* Floating Holographic Badges (Positioned around document like mockup) */}
+            
+            {/* 1. Top Left: Fraud Detection */}
+            <div className="absolute -top-3 -left-4 sm:left-2 bg-[#0C274A] border border-cyan-400/60 text-white px-3.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 backdrop-blur-md">
+              <ShieldCheck className="w-4 h-4 text-cyan-400" />
+              <span className="text-2xs font-bold tracking-wide">Fraud Detection</span>
+            </div>
+
+            {/* 2. Top Right: Risk Scoring */}
+            <div className="absolute -top-3 -right-4 sm:right-2 bg-[#0C274A] border border-cyan-400/60 text-white px-3.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 backdrop-blur-md">
+              <BarChart3 className="w-4 h-4 text-cyan-400" />
+              <span className="text-2xs font-bold tracking-wide">Risk Scoring</span>
+            </div>
+
+            {/* 3. Bottom Left: XAI Explanations */}
+            <div className="absolute -bottom-3 -left-4 sm:left-2 bg-[#0C274A] border border-cyan-400/60 text-white px-3.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 backdrop-blur-md">
+              <Brain className="w-4 h-4 text-cyan-400" />
+              <span className="text-2xs font-bold tracking-wide">XAI Explanations</span>
+            </div>
+
+            {/* 4. Bottom Right: Real-time Monitoring */}
+            <div className="absolute -bottom-3 -right-4 sm:right-2 bg-[#0C274A] border border-cyan-400/60 text-white px-3.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 backdrop-blur-md">
+              <Clock className="w-4 h-4 text-cyan-400" />
+              <span className="text-2xs font-bold tracking-wide">Real-time Monitoring</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. METRICS RIBBON */}
+      {/* 3. METRICS RIBBON (Exact Match to Mockup) */}
       <section className="bg-white border-b border-slate-200 py-6 px-4 md:px-12 shadow-xs">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
           
@@ -269,22 +270,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. KEY FEATURES SECTION */}
+      {/* 4. KEY FEATURES SECTION (Exact Match to Mockup) */}
       <section className="py-16 px-4 md:px-12 bg-[#F8FAFC]" id="features">
         <div className="max-w-7xl mx-auto space-y-10">
           
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <div className="text-center space-y-1.5 max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
               Key Features
             </h2>
-            <p className="text-xs md:text-sm text-slate-500">
+            <p className="text-xs md:text-sm text-slate-500 font-medium">
               Advanced AI and analytics to strengthen procurement governance
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            {/* Card 1 */}
+            {/* Card 1: Anomaly Detection */}
             <div className="bg-white rounded-xl border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-shadow space-y-3">
               <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
                 <Brain className="w-5 h-5" />
@@ -295,7 +296,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Card 2 */}
+            {/* Card 2: XAI Risk Scoring */}
             <div className="bg-white rounded-xl border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-shadow space-y-3">
               <div className="w-10 h-10 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
                 <BarChart3 className="w-5 h-5" />
@@ -306,7 +307,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Card 3 */}
+            {/* Card 3: Continuous Vigilance */}
             <div className="bg-white rounded-xl border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-shadow space-y-3">
               <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">
                 <ShieldCheck className="w-5 h-5" />
@@ -317,7 +318,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Card 4 */}
+            {/* Card 4: Network Analytics */}
             <div className="bg-white rounded-xl border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-shadow space-y-3">
               <div className="w-10 h-10 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center font-bold">
                 <Share2 className="w-5 h-5" />
@@ -331,7 +332,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. TENDERS & RFPS REGISTRY SECTION (Fully Scrollable & Interactive) */}
+      {/* 5. LATEST UPDATES RIBBON (Matching Mockup) */}
+      <section className="bg-[#091D34] text-white px-4 md:px-12 py-3 border-t border-blue-900/50">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 text-xs">
+          <div className="flex items-center gap-3 overflow-hidden">
+            <div className="flex items-center gap-1.5 text-slate-300 font-bold shrink-0">
+              <Megaphone className="w-4 h-4 text-blue-400" />
+              <span>Latest Updates</span>
+            </div>
+            <span className="bg-amber-400 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded uppercase shrink-0">
+              NEW
+            </span>
+            <span className="text-slate-300 text-2xs truncate">
+              CVC Vigilance Advisory: Continuous Machine Learning Risk Screening is active for 34,232 Central Tenders.
+            </span>
+          </div>
+          <ChevronRight className="w-4 h-4 text-slate-400 shrink-0 cursor-pointer" />
+        </div>
+      </section>
+
+      {/* 6. PUBLIC TENDERS SECTION (Fully Scrollable Table) */}
       <section className="py-12 px-4 md:px-12 bg-white border-t border-slate-200" id="tenders">
         <div className="max-w-7xl mx-auto space-y-6">
           
@@ -427,26 +447,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. LATEST UPDATES TICKER BAR (Matching design) */}
-      <section className="bg-[#091D34] text-white px-4 md:px-12 py-3 border-t border-blue-900/50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex items-center gap-1.5 text-slate-300 font-bold shrink-0">
-              <Megaphone className="w-4 h-4 text-blue-400" />
-              <span>Latest Updates</span>
-            </div>
-            <span className="bg-amber-400 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded uppercase shrink-0">
-              NEW
-            </span>
-            <span className="text-slate-300 text-2xs truncate">
-              CVC Vigilance Advisory: Continuous Machine Learning Risk Screening is active for 34,232 Central Tenders.
-            </span>
-          </div>
-          <ChevronRight className="w-4 h-4 text-slate-400 shrink-0" />
-        </div>
-      </section>
-
-      {/* 7. OFFICIAL FOOTER (Matching mockup exactly) */}
+      {/* 7. OFFICIAL FOOTER (Exact Match to Mockup) */}
       <footer className="bg-[#051324] text-slate-400 text-2xs py-10 px-4 md:px-12 border-t border-slate-800">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           
